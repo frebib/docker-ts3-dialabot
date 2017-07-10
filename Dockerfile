@@ -7,8 +7,6 @@ RUN pacman -Sy --noc \
     
 COPY *.service /etc/systemd/system/
 
-RUN pacman -Sy --noc vim bash-completion tree
-
     # Configure pulseaudio system mode
 RUN systemctl enable pulseaudio && \
     useradd -r -U -G audio -m -d /var/run/pulse -c "PulseAudio" -s /bin/false pulse && \
