@@ -1,0 +1,12 @@
+[Unit]
+Description=Teamspeak3 headless client, running under Xvfb
+After=network.target pulseaudio.service dbus.service
+Requires=pulseaudio.service dbus.service
+
+[Service]
+Type=simple
+User=teamspeak
+ExecStart=/usr/bin/xvfb-run --server-args='-screen 0 1280x1024x24' teamspeak3
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,14 @@
+[Unit]
+Description=VNC Server for Teamspeak3
+Requires=teamspeak3.service
+After=teamspeak3.service
+
+[Service]
+User=teamspeak
+Type=forking
+ExecStart=/usr/bin/x11vnc -display :99 -forever -shared -bg -nopw -ncache 10
+ExecStop=/usr/bin/killall x11vnc
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

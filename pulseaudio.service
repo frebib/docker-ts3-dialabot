@@ -1,0 +1,12 @@
+[Unit]
+Description=PulseAudio System Daemon
+Requires=dbus.service
+After=dbus.service
+ 
+[Service]
+Type=notify
+ExecStart=/usr/bin/pulseaudio --system --daemonize=no --no-cpu-limit \
+            --disallow-exit=yes --disallow-module-loading=no --disable-shm=yes
+ 
+[Install]
+WantedBy=multi-user.target

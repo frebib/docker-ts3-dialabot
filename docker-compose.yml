@@ -1,0 +1,23 @@
+version: "3.1"
+
+services:
+  ts3-dialabot:
+    build: .
+    image: frebib/ts3-dialabot
+    container_name: ts3-dialabot
+    restart: always
+    tty: true     # Allows systemd to log to console
+    cap_add: 
+      - SYS_NICE  # Required so pulseaudio starts correctly
+    ports:
+      - 5900:5900 # For accessing VNC for maintenence
+    tmpfs:
+      - /run
+      - /tmp
+    security_opt:
+      - seccomp:unconfined
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+      - ./ts3client:/home/teamspeak/.ts3client:rw
+
+# vim: et sw=2
