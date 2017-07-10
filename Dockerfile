@@ -16,5 +16,7 @@ RUN systemctl enable pulseaudio && \
     useradd -m -G pulse-access teamspeak && \
     systemctl enable teamspeak3 ts3vnc
 
+ENV PULSE_RUNTIME_PATH=/var/run/pulse
+
 VOLUME [ "/home/teamspeak/.ts3client" ]
 

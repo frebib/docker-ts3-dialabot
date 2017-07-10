@@ -7,6 +7,9 @@ After=dbus.service
 Type=notify
 ExecStart=/usr/bin/pulseaudio --system --daemonize=no --no-cpu-limit \
             --disallow-exit=yes --disallow-module-loading=no --disable-shm=yes
+ExecStartPost=/usr/bin/mkdir -p /var/run/pulse
+ExecStartPost=/usr/bin/chmod 775 /var/run/pulse
+ExecStartPost=/usr/bin/chown pulse:pulse-access /var/run/pulse
  
 [Install]
 WantedBy=multi-user.target
